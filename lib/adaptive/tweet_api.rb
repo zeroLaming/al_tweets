@@ -1,5 +1,5 @@
-module Tweet
-  class Fetcher
+module Adaptive
+  class TweetApi
     API_URL = "http://adaptive-test-api.herokuapp.com/tweets.json"
     ERROR_MESSAGE = "Oops - we couldn't complete that request!"
 
@@ -10,7 +10,7 @@ module Tweet
       @messages = []
     end
 
-    def fetch
+    def load
       begin
         RestClient.get(API_URL) do |response, request, result, &block|
           case response.code

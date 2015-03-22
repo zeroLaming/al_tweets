@@ -1,10 +1,10 @@
 require 'rails_helper'
-require 'tweet/fetcher'
+require 'adaptive/tweet_api'
 
 # Toggle to allow real connections
 # WebMock.allow_net_connect!
 
-describe Tweet::Fetcher do
+describe Adaptive::TweetApi do
   context "The API is up and running" do
     before do
       stub_request(:get, "adaptive-test-api.herokuapp.com/tweets.json").to_return(
@@ -15,9 +15,9 @@ describe Tweet::Fetcher do
     end
 
     subject(:tweet_fetcher) {
-      fetcher = Tweet::Fetcher.new
-      fetcher.fetch
-      fetcher
+      tweets = Adaptive::TweetApi.new
+      tweets.load
+      tweets
     }
 
     it "should not have any errors" do
@@ -67,9 +67,9 @@ describe Tweet::Fetcher do
     end
 
     subject(:tweet_fetcher) {
-      fetcher = Tweet::Fetcher.new
-      fetcher.fetch
-      fetcher
+      tweets = Adaptive::TweetApi.new
+      tweets.load
+      tweets
     }
 
     it "should have errors" do
@@ -91,9 +91,9 @@ describe Tweet::Fetcher do
     end
 
     subject(:tweet_fetcher) {
-      fetcher = Tweet::Fetcher.new
-      fetcher.fetch
-      fetcher
+      tweets = Adaptive::TweetApi.new
+      tweets.load
+      tweets
     }
 
     it "should have errors" do
@@ -101,7 +101,7 @@ describe Tweet::Fetcher do
     end
 
     it "should have an error message" do
-      expect(tweet_fetcher.error_message).to eq(Tweet::Fetcher::ERROR_MESSAGE)
+      expect(tweet_fetcher.error_message).to eq(Adaptive::TweetApi::ERROR_MESSAGE)
     end
   end
 end

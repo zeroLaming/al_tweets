@@ -22,9 +22,10 @@ ActiveRecord::Schema.define(version: 20150322105409) do
     t.text     "tweet_message"
     t.string   "tweet_sentiment"
     t.integer  "tweet_followers"
-    t.integer  "tweet_user_handle"
+    t.string   "tweet_user_handle"
     t.datetime "tweet_updated_at"
     t.datetime "tweet_created_at"
+    t.integer  "viewed_count",      default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

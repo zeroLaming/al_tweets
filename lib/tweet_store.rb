@@ -12,12 +12,14 @@ class TweetStore
         tweets = []
         tweet_loader.messages.each do |message|
           tweet = Tweet.where(tweet_id: message['id']).first_or_initialize
-          attributes = {}.tap do |h|
-            message.each do |k, v|
-              h["tweet_#{k}"] = v
-            end
+
+          # Have we seen this tweet before?
+          if tweet.persisted?
+            tweet.update(viewed_count: tweet.viewed_count + 1)
+          else
+            tweet.update_from_json(message)
           end
-          tweet.update(attributes)
+
           tweets << tweet
         end
 

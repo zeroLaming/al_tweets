@@ -14,3 +14,18 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+var highlight_messages = function () {
+  $.each($('#tweets p'), function(index, p) {
+    var text = $(p).text();
+    var r = new RegExp($('#tweets').data('highlight').split(' ').join('|'), '\i');
+
+    if(text.search(r) != -1) {
+      $(p).addClass('highlight');
+    }
+  });
+}
+
+$(document).ready(function() {
+  highlight_messages();
+});

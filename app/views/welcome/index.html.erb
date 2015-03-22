@@ -1,0 +1,11 @@
+<h1>Hi, here are some thoughts! Tweets about <%= @highlight.join(', ').titleize %> are highlighted in red:</h1>
+
+<div id="error"></div>
+
+<div id="tweets" data-highlight="<%= @highlight.join(' ') %>">
+  <%= render 'tweets' %>
+</div>
+
+<%= link_to 'Fetch more!', reload_path, remote: true, class: 'reload-btn' %>
+
+<%= link_to 'Clear', clear_path, method: :delete, remote: true, class: 'clear-btn' %>

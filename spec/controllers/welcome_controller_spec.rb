@@ -1,5 +1,7 @@
 require "rails_helper"
 
+# Replaced 'get:' with 'xhr :get'
+# https://github.com/rspec/rspec-rails/issues/950
 RSpec.describe WelcomeController, type: :controller do
 
   describe "GET #index" do
@@ -37,12 +39,12 @@ RSpec.describe WelcomeController, type: :controller do
     end
 
     it "responds successfully with an HTTP 200 status code" do
-      get :reload, format: :js
+      xhr :get, :reload, format: :js
       expect(response).to be_success
     end
 
     it "renders the reload js template" do
-      get :reload, format: :js
+      xhr :get, :reload, format: :js
       expect(response).to render_template("reload")
     end
 
@@ -53,7 +55,7 @@ RSpec.describe WelcomeController, type: :controller do
       end
 
       it "assigns new tweets" do
-        get :reload, format: :js
+        xhr :get, :reload, format: :js
         expect(assigns(:tweets)).to eq([@tweet_1, @tweet_2])
       end
     end
@@ -68,7 +70,7 @@ RSpec.describe WelcomeController, type: :controller do
       end
 
       it "should set an error message" do
-        get :reload, format: :js
+        xhr :get, :reload, format: :js
         expect(assigns(:error_message)).to eq("I don't know what happened there")
       end
 

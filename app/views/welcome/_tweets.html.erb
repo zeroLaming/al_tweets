@@ -1,0 +1,7 @@
+<% @tweets.each do |tweet| %>
+  <p data-tweet-id="<%= tweet.tweet_id %>">
+    <%= image_for_sentiment(tweet.sentiment) %>
+    <strong><%= tweet.user_handle %></strong>:
+    <%= tweet.message %> (<%= tweet.sentiment %>, viewed <%= pluralize(tweet.viewed_count, 'time') %>)
+  </p>
+<% end %>

@@ -13,3 +13,39 @@
  *= require_tree .
  *= require_self
  */
+
+ html, body {
+  font-family: Arial, serif;
+ }
+
+#error {
+  display: none;
+  background: yellow;
+  padding: 20px;
+  border: red;
+  color: red;
+  text-align: center;
+  font-weight: bold;
+}
+
+.reload-btn {
+  border: 3px solid blue;
+  padding: 20px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.clear-btn {
+  margin-top: 40px;
+  padding: 20px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.highlight {
+  background: red;
+}

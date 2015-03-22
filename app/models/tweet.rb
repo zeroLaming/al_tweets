@@ -9,11 +9,20 @@ class Tweet < ActiveRecord::Base
   validates :tweet_created_at, presence: true
 
   scope :order_by_sentiment, -> {
-    order('tweet_sentiment Desc')
+    order("to_number(tweet_sentiment, '9.9') DESC")
   }
 
-  def self.method_missing(method_sym, *args, &block)
-    method = :"tweet_#{method_sym.to_s}"
+  def update_from_json(json)
+    attributes = {}.tap do |h|
+      json.each do |k, v|
+        h["tweet_#{k}"] = v
+      end
+    end
+    self.update(attributes)
+  end
+
+  def method_missing(method_sym, *args, &block)
+    method = "tweet_#{method_sym.to_s}"
 
     if self.respond_to?(method)
       self.send(method, *args)

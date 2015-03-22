@@ -1,0 +1,7 @@
+<% if @error_message.present? %>
+$("#error").html("<%= @error_message %>").show();
+<% else %>
+$("#error").hide();
+$("#tweets").html("<%= escape_javascript(render('tweets')) %>");
+highlight_messages();
+<% end %>

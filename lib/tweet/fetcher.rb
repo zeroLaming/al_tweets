@@ -1,6 +1,7 @@
 module Tweet
   class Fetcher
     API_URL = "http://adaptive-test-api.herokuapp.com/tweets.json"
+    ERROR_MESSAGE = "Oops - we couldn't complete that request!"
 
     attr_reader :error_message, :messages
 
@@ -22,7 +23,7 @@ module Tweet
           end
         end
       rescue Exception => ex
-        @error_message = "Oops - we couldn't complete that request!"
+        @error_message = ERROR_MESSAGE
       end
     end
 

@@ -101,7 +101,7 @@ describe Tweet::Fetcher do
     end
 
     it "should have an error message" do
-      expect(tweet_fetcher.error_message).to eq("Oops - we couldn't complete that request!")
+      expect(tweet_fetcher.error_message).to eq(Tweet::Fetcher::ERROR_MESSAGE)
     end
   end
 end

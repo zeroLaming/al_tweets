@@ -5,7 +5,11 @@ class WelcomeController < ActionController::Base
   end
 
   def reload
-
+    begin
+      @tweets = TweetStore.fetch_and_store
+    rescue StandardError => ex
+      @error_message = ex.message
+    end
   end
 
 end

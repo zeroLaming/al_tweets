@@ -11,7 +11,7 @@ The app is up and running on Heroku: https://altweets.herokuapp.com
 
 # Running the tests:
 
-```rspec```
+1. ```rspec``` 
 
 # To deploy:
 

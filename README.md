@@ -11,13 +11,15 @@ The app is up and running on Heroku: https://altweets.herokuapp.com
 
 # Running the tests:
 
-1. ```rspec``` 
+1. ```rspec```
 
 # To deploy:
 
 After getting access to the Heroku project, add the remote:
 
 ```heroku git:remote -a altweets```
+
+Then deploy:
 
 ```git push heroku master```
 
